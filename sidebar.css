@@ -21,3 +21,8 @@ main {
     padding: var(--gap);
     border-radius: 16px;
 }
+
+/* begin content at same height. equal padding is provided by container. */
+:is(.sidebar, .content) :first-child {
+    margin-top: 0;
+}
