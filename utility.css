@@ -25,3 +25,11 @@ a:hover, a:active, a:focus {
     text-underline-offset: 2px;
     text-decoration-thickness: 1px;
 }
+
+hr {
+    margin: var(--gap);
+    border-style: dotted;
+    border-width: 1px;
+    border-top: 0;
+    border-color: #888;
+}
