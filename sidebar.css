@@ -3,7 +3,6 @@ main {
     gap: var(--gap);
 }
 
-
 .content {
     flex: 1;
     
@@ -23,6 +22,6 @@ main {
 }
 
 /* begin content at same height. equal padding is provided by container. */
-:is(.sidebar, .content) :first-child {
+:is(.sidebar, .content) > :first-child {
     margin-top: 0;
 }
