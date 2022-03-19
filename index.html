@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Semistickysidebar</title>
+    <title>Better-Sticky-Sidebar</title>
 
     <link rel="stylesheet" href="var.css">
     <link rel="stylesheet" href="utility.css">
@@ -12,17 +12,7 @@
     <link rel="stylesheet" href="sidebar.css">
 </head>
 <body>
-    <header>
-        <nav class="inside">
-            <ul>
-                <li>Select sidebar sticky behaviour:</li>
-                <li><a href="#" data-sticky-behaviour="none">not sticky</a></li>
-                <li><a href="#" data-sticky-behaviour="default">default sticky</a></li>
-                <li><a href="#" data-sticky-behaviour="semi">sticky after scroll</a></li>
-                <li><a href="#" data-sticky-behaviour="auto">best of both</a></li>
-            </ul>
-        </nav>
-    </header>
+    <header></header>
     <main class="inside">
         <section class="content">
             <h1>Lorem ipsum?</h1>
@@ -35,43 +25,45 @@
             <h2>Ad, necessitatibus ipsum?</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quasi cupiditate, reiciendis accusantium rem magni minus corrupti et. Rem, libero eveniet facilis adipisci vel ut odio sequi nihil ex, consectetur voluptatem ad sit, omnis velit et tempore laudantium ea! Fugiat, amet necessitatibus pariatur, quae neque error sed nostrum ut quas natus debitis numquam quidem suscipit placeat. Harum vel ex repudiandae iusto, nostrum libero voluptatum hic saepe, labore, corporis amet consectetur rerum? Odio harum dolor inventore quae molestiae non, dignissimos laudantium iure doloribus necessitatibus vero perferendis soluta temporibus neque maxime, totam, labore autem amet explicabo. Exercitationem voluptatem error quos accusantium, repellendus modi neque ullam nulla assumenda reprehenderit? Accusamus ea ab, dicta tenetur odio doloremque quod fuga in libero quas, laudantium animi quasi expedita maxime facere ipsum cumque distinctio! Fugiat dolores blanditiis obcaecati sunt quis, officiis reiciendis sapiente, ipsa fuga maiores accusantium harum dolorem ea eius esse minus iusto odit necessitatibus! Sint nisi aperiam quas illum blanditiis, quos, architecto esse recusandae vitae quis, praesentium molestiae voluptates? Quam possimus ducimus non molestiae minima, nesciunt vitae quasi esse dolores amet commodi hic cumque! Vero, libero quos sapiente iure animi est maiores necessitatibus ad dolorum officia iste voluptas quis, error reprehenderit? Iusto vero laudantium eligendi ut maxime nostrum quos quibusdam perferendis debitis, odio velit accusantium aut reiciendis impedit voluptatem alias veritatis animi. Porro rem quam nulla error dolorum, explicabo temporibus cum nisi provident omnis qui exercitationem voluptatem eligendi consequuntur repellendus praesentium ab voluptates sequi perferendis cumque ipsa, minus voluptas possimus? Cum labore tenetur at, id ipsam quos dolor commodi aliquam numquam totam sed soluta recusandae fugiat voluptates natus vitae dolore maxime facere cumque corporis deleniti exercitationem, eos itaque quae! Suscipit esse dolore dolorem aut mollitia! Excepturi velit praesentium sunt vel optio eaque repudiandae consequatur saepe? Consequuntur labore aut assumenda sequi quidem error voluptatibus perspiciatis, fuga totam ut reprehenderit. Iste omnis consequuntur provident voluptatum quae eum alias ratione, maxime explicabo atque officiis voluptatibus, deserunt ea, dolorem modi sunt. Voluptates quisquam, minus expedita eos esse doloremque omnis sapiente nisi enim aperiam iusto vel quas necessitatibus iure maxime recusandae, nostrum tenetur quasi ratione unde soluta? Est nulla quaerat odio officia. Soluta facilis incidunt cum minus quaerat commodi dolorem, quae laudantium! Placeat eius est qui beatae rerum sed maiores molestiae, dolorem ipsa adipisci! Quidem praesentium odit explicabo ducimus, vero velit quasi, voluptatem minus eius sequi alias at pariatur esse ullam quaerat minima, culpa delectus maiores est quos ipsam ut.</p>
         </section>
-        <aside class="sidebar">
-            <details open>
-                <summary>Expand Sidebar</summary>
-                <h2>News</h2>
-                <article class="news-card">
-                    <h3>Lorem ipsum dolor sit amet</h3>
-                    <small>Nulla ipsum aliquid vel iste velit aperiam animi maxime pariatur voluptatem natus&hellip; <a href="//tim-greller.de">(Weiterlesen)</a></small>
-                </article>
-                <article class="news-card">
-                    <h3>Lorem ipsum dolor sit amet</h3>
-                    <small>Nulla ipsum aliquid vel iste velit aperiam animi maxime pariatur voluptatem natus&hellip; <a href="//tim-greller.de">(Weiterlesen)</a></small>
-                </article>
-                <article class="news-card">
-                    <h3>Lorem ipsum dolor sit amet</h3>
-                    <small>Nulla ipsum aliquid vel iste velit aperiam animi maxime pariatur voluptatem natus&hellip; <a href="//tim-greller.de">(Weiterlesen)</a></small>
-                </article>
-                <article class="news-card">
-                    <h3>Lorem ipsum dolor sit amet</h3>
-                    <small>Nulla ipsum aliquid vel iste velit aperiam animi maxime pariatur voluptatem natus&hellip; <a href="//tim-greller.de">(Weiterlesen)</a></small>
-                </article>
-            </details>
-            <hr>
-            <h2>Links</h2>
-            <ul>
-                <li><a href="//tim-greller.de">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="//tim-greller.de">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="//tim-greller.de">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="//tim-greller.de">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="//tim-greller.de">Lorem ipsum dolor sit amet</a></li>
-            </ul>
-            <hr>
-            <p>&copy; 2022 Sidebar Demo</p>
-            <small>Lorem ipsum dolor sit amet consectetur adipisicing elit. A consectetur facere quam? Facilis, obcaecati voluptatum sequi vitae minima ipsam commodi?</small>
+        <aside class="sidebar-container">
+            <div class="sidebar">
+                <details open>
+                    <summary>Expand Sidebar</summary>
+                    <h2>News</h2>
+                    <article class="news-card">
+                        <h3>Lorem ipsum dolor sit amet</h3>
+                        <small>Nulla ipsum aliquid vel iste velit aperiam animi maxime pariatur voluptatem natus&hellip; <a href="//tim-greller.de">(Weiterlesen)</a></small>
+                    </article>
+                    <article class="news-card">
+                        <h3>Lorem ipsum dolor sit amet</h3>
+                        <small>Nulla ipsum aliquid vel iste velit aperiam animi maxime pariatur voluptatem natus&hellip; <a href="//tim-greller.de">(Weiterlesen)</a></small>
+                    </article>
+                    <article class="news-card">
+                        <h3>Lorem ipsum dolor sit amet</h3>
+                        <small>Nulla ipsum aliquid vel iste velit aperiam animi maxime pariatur voluptatem natus&hellip; <a href="//tim-greller.de">(Weiterlesen)</a></small>
+                    </article>
+                    <article class="news-card">
+                        <h3>Lorem ipsum dolor sit amet</h3>
+                        <small>Nulla ipsum aliquid vel iste velit aperiam animi maxime pariatur voluptatem natus&hellip; <a href="//tim-greller.de">(Weiterlesen)</a></small>
+                    </article>
+                </details>
+                <hr>
+                <h2>Links</h2>
+                <ul>
+                    <li><a href="//tim-greller.de">Lorem ipsum dolor sit amet</a></li>
+                    <li><a href="//tim-greller.de">Lorem ipsum dolor sit amet</a></li>
+                    <li><a href="//tim-greller.de">Lorem ipsum dolor sit amet</a></li>
+                    <li><a href="//tim-greller.de">Lorem ipsum dolor sit amet</a></li>
+                    <li><a href="//tim-greller.de">Lorem ipsum dolor sit amet</a></li>
+                </ul>
+                <hr>
+                <p>&copy; 2022 Sidebar Demo</p>
+                <small>Lorem ipsum dolor sit amet consectetur adipisicing elit. A consectetur facere quam? Facilis, obcaecati voluptatum sequi vitae minima ipsam commodi?</small>
+            </div>
         </aside>
     </main>
     <footer>
-        <script src="switch-demo-mode.js" defer></script>
+        <script src="sidebar.js" defer></script>
     </footer>
 </body>
 </html>

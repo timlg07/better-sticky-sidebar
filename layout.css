@@ -13,16 +13,15 @@ body {
 }
 
 header {
-    height: var(--header-height);
-
-    position: sticky;
     top: 0;
+    position: sticky;
     z-index: 1000;
+
+    height: var(--header-height);
 
     background-color: #fff;
     box-shadow: 0 -8px 16px 8px rgb(0 0 0 / .2);
 }
-
 nav {
     padding: 0 var(--gap);
     height: 100%;
@@ -42,6 +41,9 @@ nav ul, nav ul li {
 
 main {
     flex-grow: 1;
+
+    display: flex;
+    gap: var(--gap);
 }
 
 footer {
@@ -51,4 +53,26 @@ footer {
 
 body, header, main, footer {
     width: 100%;
+}
+
+.content {
+    flex: 1;
+    padding: var(--gap);
+    
+    background-color: #eee;
+    border-radius: var(--corner);
+    box-shadow: 0 0 20px rgb(0 0 0 / .1);
+}
+
+.sidebar-container {
+    width: var(--sidebar-width);
+}
+
+.content, .sidebar-container {    
+    margin: var(--gap) 0;
+}
+
+/* begin content at same height. equal padding is provided by container. */
+:is(.sidebar-container, .content) > :first-child {
+    margin-top: 0;
 }

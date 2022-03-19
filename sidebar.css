@@ -1,52 +1,16 @@
-main {
-    display: flex;
-    gap: var(--gap);
+/* individual design styles, not necessary */
+.sidebar {
+    background-color: #e5e5e5;
+    padding: var(--gap);
+    border-radius: var(--corner);
 }
 
-.content {
-    flex: 1;
-    
-    background-color: #eee;
-    box-shadow: 0 0 20px rgb(0 0 0 / .1);
+/* positioning */
+.sidebar-container {
+    position: relative;
 }
 
 .sidebar {
-    width: var(--sidebar-width);
-    background-color: #e5e5e5;
-}
-
-.content, .sidebar {    
-    margin: var(--gap) 0;
-    padding: var(--gap);
-    border-radius: 16px;
-}
-
-/* begin content at same height. equal padding is provided by container. */
-:is(.sidebar, .content) > :first-child {
-    margin-top: 0;
-}
-
-.sidebar.sticky-none {
-    position: inherit;
-    align-self: flex-start;
-}
-
-.sidebar.sticky-default {
-    align-self: flex-start;
-    position: sticky;
-    top: calc(var(--header-height) + var(--gap));
-}
-
-.sidebar.sticky-semi {    
-    align-self: flex-end;
-    position: sticky;
-    bottom: var(--gap);
-}
-
-.sidebar.sticky-auto {
-    align-self: auto;
-    height: fit-content;
-    position: sticky;
-    top: calc(var(--header-height) + var(--gap));
-    bottom: var(--gap);
+    position: absolute;
+    top: var(--push-down);
 }
