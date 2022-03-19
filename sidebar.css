@@ -1,0 +1,23 @@
+main {
+    display: flex;
+    gap: var(--gap);
+}
+
+
+.content {
+    flex: 1;
+    
+    background-color: #eee;
+    box-shadow: 0 0 20px rgb(0 0 0 / .1);
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: #e5e5e5;
+}
+
+.content, .sidebar {    
+    margin: var(--gap) 0;
+    padding: var(--gap);
+    border-radius: 16px;
+}

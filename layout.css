@@ -15,6 +15,7 @@ header {
     height: 3em;
     position: sticky;
     background-color: #fff;
+    box-shadow: 0 -8px 16px 8px rgb(0 0 0 / .2);
 }
 
 main {
@@ -29,10 +30,4 @@ footer {
 
 body, header, main, footer {
     width: 100%;
-}
-
-.content {
-    background-color: #f2f2f2;
-    width: calc(100% - var(--sidebar-width));
-    height: 100%;
 }
