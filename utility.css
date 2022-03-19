@@ -5,3 +5,22 @@
 .inside {
     max-width: var(--max-content-width);
 }
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+ul li {
+    margin-bottom: 1em;
+}
+
+a {
+    color: rgb(224, 101, 0);
+    text-decoration: none;
+}
+a:hover, a:active, a:focus {
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+}
