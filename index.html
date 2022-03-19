@@ -12,7 +12,16 @@
     <link rel="stylesheet" href="sidebar.css">
 </head>
 <body>
-    <header></header>
+    <header>
+        <nav class="inside">
+            <ul>
+                <li>Select sidebar sticky behaviour:</li>
+                <li><a href="#" data-sticky-behaviour="none">not sticky</a></li>
+                <li><a href="#" data-sticky-behaviour="default">default sticky</a></li>
+                <li><a href="#" data-sticky-behaviour="semi">semi sticky</a></li>
+            </ul>
+        </nav>
+    </header>
     <main class="inside">
         <section class="content">
             <h1>Lorem ipsum?</h1>
@@ -51,6 +60,8 @@
             </ul>
         </aside>
     </main>
-    <footer></footer>
+    <footer>
+        <script src="switch-demo-mode.js" defer></script>
+    </footer>
 </body>
 </html>

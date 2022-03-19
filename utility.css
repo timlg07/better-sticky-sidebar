@@ -4,6 +4,7 @@
 
 .inside {
     max-width: var(--max-content-width);
+    margin: auto;
 }
 
 ul {
