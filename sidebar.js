@@ -1,40 +1,48 @@
-window.prevScrollY = window.scrollY;
-window.curr_top = 0;
-window.stickyHeader = document.querySelector('header');
-window.onscroll = function (e) {
-    if (window.scrollY < this.prevScrollY) {
-        scrollUpwards();
-    } else {
-        scrollDownwards();
-    }
-    this.prevScrollY = window.scrollY;
-}
+function betterStickySidebar(sidebarContainerSelector, sidebarSelector, stickyHeaderSelector) {
+    let prevScrollY = window.scrollY;
+    let currentSidebarTop = 0;
 
-function scrollUpwards() {
-    // Figure out where the new window will be after scroll
-    let aside = document.querySelector('.sidebar');
-    let aside_cont = document.querySelector('.sidebar-container');
-    const delta = aside.getBoundingClientRect().top - window.stickyHeader.offsetHeight;
-    let aboveAside = delta > 0;
-    // If we are going above the element then we know we must stick it to the top
-    if (aboveAside) {
-        window.curr_top = Math.max(window.curr_top - delta, 0);
-        aside.style.setProperty('--push-down', window.curr_top + 'px');
-    }
-}
+    const getStickyHeaderHeight = (selector => {
+        const stickyHeaderElem = document.querySelector(selector);
+        return () => stickyHeaderElem?.offsetHeight || 0;
+    })(stickyHeaderSelector);
 
-function scrollDownwards() {
-    // Figure out where the new window will be after scroll
-    let aside = document.querySelector('.sidebar');
-    let aside_cont = document.querySelector('.sidebar-container');
-    let browser_bottom = window.innerHeight;
-    let aside_bottom = aside.getBoundingClientRect().top + aside.offsetHeight;
-    const delta = browser_bottom - aside_bottom;
-    let belowAside = delta > 0;
-    // If we are going below the element then we know we must stick it to the bottom.
-    if (belowAside) {
-        const available_top_space = aside_cont.getBoundingClientRect().height - aside.getBoundingClientRect().height;
-        window.curr_top = Math.min(window.curr_top + delta, available_top_space);
-        aside.style.setProperty('--push-down', window.curr_top + 'px');
+    const sidebar = document.querySelector(sidebarSelector);
+    const sidebarContainer = document.querySelector(sidebarContainerSelector);
+    if (sidebar == null || sidebarContainer == null) throw new Error('invalid selector');
+
+    window.addEventListener('scroll', e => {
+        if (window.scrollY < prevScrollY) {
+            scrollUpwards();
+        } else {
+            scrollDownwards();
+        }
+        prevScrollY = window.scrollY;
+    });
+
+    function scrollUpwards() {
+        const delta = sidebar.getBoundingClientRect().top - getStickyHeaderHeight();
+        let abovesidebar = delta > 0;
+
+        // We are scrolling above the element => reduce the top space to keep it sticked to the top
+        if (abovesidebar) {
+            currentSidebarTop = Math.max(currentSidebarTop - delta, 0);
+            sidebar.style.setProperty('--push-down', currentSidebarTop + 'px');
+        }
+    }
+
+    function scrollDownwards() {
+        let browserBottom = window.innerHeight;
+        let sidebarBottom = sidebar.getBoundingClientRect().top + sidebar.offsetHeight;
+        const delta = browserBottom - sidebarBottom;
+        let belowsidebar = delta > 0;
+
+        // We are scrolling below the element & it would scroll out of the viewport. 
+        // => increase top space to keep it sticked to the bottom
+        if (belowsidebar) {
+            const availableSidebarTopSpace = sidebarContainer.getBoundingClientRect().height - sidebar.getBoundingClientRect().height;
+            currentSidebarTop = Math.min(currentSidebarTop + delta, availableSidebarTopSpace);
+            sidebar.style.setProperty('--push-down', currentSidebarTop + 'px');
+        }
     }
 }

@@ -64,6 +64,11 @@
     </main>
     <footer>
         <script src="sidebar.js" defer></script>
+        <script>
+        window.addEventListener('load', e => {
+            betterStickySidebar('.sidebar-container', '.sidebar', 'header');
+        });
+        </script>
     </footer>
 </body>
 </html>
