@@ -1,0 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
+.inside {
+    max-width: var(--max-content-width);
+}

@@ -31,6 +31,8 @@ body, header, main, footer {
     width: 100%;
 }
 
-.inside {
-    max-width: var(--max-content-width);
+.content {
+    background-color: #f2f2f2;
+    width: calc(100% - var(--sidebar-width));
+    height: 100%;
 }
