@@ -1,3 +1,9 @@
+/**
+ * 
+ * @param {string} sidebarContainerSelector 
+ * @param {string} sidebarSelector 
+ * @param {string} stickyHeaderSelector 
+ */
 function betterStickySidebar(sidebarContainerSelector, sidebarSelector, stickyHeaderSelector = null) {
     let prevScrollY = window.scrollY;
     let currentSidebarTop = 0;
@@ -12,15 +18,24 @@ function betterStickySidebar(sidebarContainerSelector, sidebarSelector, stickyHe
     if (sidebar == null || sidebarContainer == null) throw new Error('invalid selector');
 
     const updateSidebarPosition = newTop => {
-        currentSidebarTop = newTop
-        sidebar.style.setProperty('--push-down', currentSidebarTop + 'px');
+        if (currentSidebarTop == newTop) return;
+
+        requestAnimationFrame(() => {
+            currentSidebarTop = newTop;
+            sidebar.style.setProperty('--push-down', currentSidebarTop + 'px');
+        });
     }
 
     const isSmallerThanViewport = () => {
         const availableViewportHeight = window.innerHeight - getStickyHeaderHeight();
-        return sidebar.getBoundingClientRect().height <= availableViewportHeight;
+        return sidebar.clientHeight <= availableViewportHeight;
     }
 
+    /*
+     * No throttling is used here, because the scroll element is only fired when the browser
+     * recalculates the layout, which is exactly when we want to recalculate the sidebar position as well.
+     * (more information: https://stackoverflow.com/a/44779316/6336728)
+     */
     window.addEventListener('scroll', e => {
         const alwaysStickToTop = isSmallerThanViewport();
         if (window.scrollY < prevScrollY || alwaysStickToTop) {
@@ -33,20 +48,21 @@ function betterStickySidebar(sidebarContainerSelector, sidebarSelector, stickyHe
 
     function limitByViewportTop(force = false) {
         const delta = sidebar.getBoundingClientRect().top - getStickyHeaderHeight();
-        let abovesidebar = delta > 0;
+        const abovesidebar = delta > 0;
 
         // We are scrolling above the element => reduce the top space to keep it sticked to the top
         if (abovesidebar || force) {
-            const newTop = Math.max(currentSidebarTop - delta, 0);
+            const upperLimit = sidebarContainer.getBoundingClientRect().height - sidebar.getBoundingClientRect().height;
+            const newTop = Math.min(Math.max(0, currentSidebarTop - delta), upperLimit);
             updateSidebarPosition(newTop);
         }
     }
 
     function limitByViewportBottom() {
-        let browserBottom = window.innerHeight;
-        let sidebarBottom = sidebar.getBoundingClientRect().top + sidebar.offsetHeight;
+        const browserBottom = window.innerHeight;
+        const sidebarBottom = sidebar.getBoundingClientRect().top + sidebar.offsetHeight;
         const delta = browserBottom - sidebarBottom;
-        let belowsidebar = delta > 0;
+        const belowsidebar = delta > 0;
 
         // We are scrolling below the element & it would scroll out of the viewport. 
         // => increase top space to keep it sticked to the bottom
