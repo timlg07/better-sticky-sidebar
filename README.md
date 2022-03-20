@@ -1,5 +1,8 @@
 # Better-Sticky-Sidebar
 
+## Demo
+https://tim-greller.de/git/better-sticky-sidebar/
+
 ## Usage
 
 1. **Include the script:**
