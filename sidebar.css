@@ -6,11 +6,7 @@
 }
 
 /* positioning */
-.sidebar-container {
-    position: relative;
-}
-
 .sidebar {
-    position: absolute;
+    position: relative;
     top: var(--push-down);
 }
