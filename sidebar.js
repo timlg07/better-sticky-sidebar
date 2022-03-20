@@ -1,4 +1,4 @@
-function betterStickySidebar(sidebarContainerSelector, sidebarSelector, stickyHeaderSelector) {
+function betterStickySidebar(sidebarContainerSelector, sidebarSelector, stickyHeaderSelector = null) {
     let prevScrollY = window.scrollY;
     let currentSidebarTop = 0;
 
