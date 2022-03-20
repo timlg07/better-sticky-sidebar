@@ -11,6 +11,11 @@ function betterStickySidebar(sidebarContainerSelector, sidebarSelector, stickyHe
     const sidebarContainer = document.querySelector(sidebarContainerSelector);
     if (sidebar == null || sidebarContainer == null) throw new Error('invalid selector');
 
+    const updateSidebarPosition = newTop => {
+        currentSidebarTop = newTop
+        sidebar.style.setProperty('--push-down', currentSidebarTop + 'px');
+    }
+
     window.addEventListener('scroll', e => {
         if (window.scrollY < prevScrollY) {
             scrollUpwards();
@@ -26,8 +31,8 @@ function betterStickySidebar(sidebarContainerSelector, sidebarSelector, stickyHe
 
         // We are scrolling above the element => reduce the top space to keep it sticked to the top
         if (abovesidebar) {
-            currentSidebarTop = Math.max(currentSidebarTop - delta, 0);
-            sidebar.style.setProperty('--push-down', currentSidebarTop + 'px');
+            const newTop = Math.max(currentSidebarTop - delta, 0);
+            updateSidebarPosition(newTop);
         }
     }
 
@@ -41,8 +46,8 @@ function betterStickySidebar(sidebarContainerSelector, sidebarSelector, stickyHe
         // => increase top space to keep it sticked to the bottom
         if (belowsidebar) {
             const availableSidebarTopSpace = sidebarContainer.getBoundingClientRect().height - sidebar.getBoundingClientRect().height;
-            currentSidebarTop = Math.min(currentSidebarTop + delta, availableSidebarTopSpace);
-            sidebar.style.setProperty('--push-down', currentSidebarTop + 'px');
+            const newTop = Math.min(currentSidebarTop + delta, availableSidebarTopSpace);
+            updateSidebarPosition(newTop);
         }
     }
 }
