@@ -16,27 +16,33 @@ function betterStickySidebar(sidebarContainerSelector, sidebarSelector, stickyHe
         sidebar.style.setProperty('--push-down', currentSidebarTop + 'px');
     }
 
+    const isSmallerThanViewport = () => {
+        const availableViewportHeight = window.innerHeight - getStickyHeaderHeight();
+        return sidebar.getBoundingClientRect().height <= availableViewportHeight;
+    }
+
     window.addEventListener('scroll', e => {
-        if (window.scrollY < prevScrollY) {
-            scrollUpwards();
+        const alwaysStickToTop = isSmallerThanViewport();
+        if (window.scrollY < prevScrollY || alwaysStickToTop) {
+            limitByViewportTop(alwaysStickToTop); 
         } else {
-            scrollDownwards();
+            limitByViewportBottom();
         }
         prevScrollY = window.scrollY;
     });
 
-    function scrollUpwards() {
+    function limitByViewportTop(force = false) {
         const delta = sidebar.getBoundingClientRect().top - getStickyHeaderHeight();
         let abovesidebar = delta > 0;
 
         // We are scrolling above the element => reduce the top space to keep it sticked to the top
-        if (abovesidebar) {
+        if (abovesidebar || force) {
             const newTop = Math.max(currentSidebarTop - delta, 0);
             updateSidebarPosition(newTop);
         }
     }
 
-    function scrollDownwards() {
+    function limitByViewportBottom() {
         let browserBottom = window.innerHeight;
         let sidebarBottom = sidebar.getBoundingClientRect().top + sidebar.offsetHeight;
         const delta = browserBottom - sidebarBottom;
