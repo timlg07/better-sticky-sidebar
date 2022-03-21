@@ -21,7 +21,13 @@ https://tim-greller.de/git/better-sticky-sidebar/
     ```html
     <script>
     window.addEventListener('DOMContentLoaded', e => {
-        betterStickySidebar('.sidebar-container', '.sidebar', 'header');
+        betterStickySidebar({
+            sidebarContainerSelector: '.sidebar-container', 
+            sidebarSelector: '.sidebar', 
+            stickyHeaderSelector: 'header', // optional
+            marginTop: 32,   // optional
+            marginBottom: 32 // optional
+        });
     });
     </script>
     ```

@@ -66,7 +66,17 @@
         <script src="sidebar.js" defer></script>
         <script>
         window.addEventListener('DOMContentLoaded', e => {
-            betterStickySidebar('.sidebar-container', '.sidebar', 'header');
+            const updateSidebarBounds = betterStickySidebar({
+                sidebarContainerSelector: '.sidebar-container', 
+                sidebarSelector: '.sidebar', 
+                stickyHeaderSelector: 'header',
+                marginTop: 32, 
+                marginBottom: 32
+            });
+
+            // notify the sidebar about sidebar height changes
+            const detailsElem = document.querySelector('details');
+            detailsElem.addEventListener('toggle', updateSidebarBounds);
         });
         </script>
     </footer>
