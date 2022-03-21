@@ -50,7 +50,7 @@ function betterStickySidebar({
     }
 
     const isSmallerThanViewport = () => {
-        const availableViewportHeight = window.innerHeight - getStickyHeaderHeight();
+        const availableViewportHeight = window.innerHeight - getStickyHeaderHeight() - marginTop;
         return sidebar.clientHeight <= availableViewportHeight;
     }
 
