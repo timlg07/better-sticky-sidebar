@@ -25,10 +25,14 @@ function betterStickySidebar(sidebarContainerSelector, sidebarSelector, stickyHe
     if (sidebar == null || sidebarContainer == null) throw new Error('invalid selector');
 
     const updateSidebarPosition = newTop => {
-        if (currentSidebarTop == newTop) return;
+        const lowerLimit = 0;
+        const upperLimit = sidebarContainer.getBoundingClientRect().height - sidebar.getBoundingClientRect().height;
+        const newClampedTop = Math.min(Math.max(lowerLimit, newTop), upperLimit);
+
+        if (currentSidebarTop === newClampedTop) return;
+        currentSidebarTop = newClampedTop;
 
         requestAnimationFrame(() => {
-            currentSidebarTop = newTop;
             sidebar.style.setProperty('--push-down', currentSidebarTop + 'px');
         });
     }
@@ -59,9 +63,7 @@ function betterStickySidebar(sidebarContainerSelector, sidebarSelector, stickyHe
 
         // We are scrolling above the element => reduce the top space to keep it sticked to the top
         if (abovesidebar || force) {
-            const upperLimit = sidebarContainer.getBoundingClientRect().height - sidebar.getBoundingClientRect().height;
-            const newTop = Math.min(Math.max(0, currentSidebarTop - delta), upperLimit);
-            updateSidebarPosition(newTop);
+            updateSidebarPosition(currentSidebarTop - delta);
         }
     }
 
@@ -74,9 +76,7 @@ function betterStickySidebar(sidebarContainerSelector, sidebarSelector, stickyHe
         // We are scrolling below the element & it would scroll out of the viewport. 
         // => increase top space to keep it sticked to the bottom
         if (belowsidebar) {
-            const availableSidebarTopSpace = sidebarContainer.getBoundingClientRect().height - sidebar.getBoundingClientRect().height;
-            const newTop = Math.min(currentSidebarTop + delta, availableSidebarTopSpace);
-            updateSidebarPosition(newTop);
+            updateSidebarPosition(currentSidebarTop + delta);
         }
     }
 }
