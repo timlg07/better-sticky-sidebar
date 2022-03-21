@@ -84,7 +84,7 @@ function betterStickySidebar({
 
     function limitByViewportBottom() {
         const browserBottom = window.innerHeight;
-        const sidebarBottom = sidebar.getBoundingClientRect().top + sidebar.offsetHeight;
+        const sidebarBottom = sidebar.getBoundingClientRect().bottom;
         const delta = browserBottom - sidebarBottom - marginBottom;
         const belowsidebar = delta > 0;
 
