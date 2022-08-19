@@ -58,7 +58,7 @@ function betterStickySidebar({
      * recalculates the layout, which is exactly when we want to recalculate the sidebar position as well.
      * (more information: https://stackoverflow.com/a/44779316/6336728)
      */
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, {passive: true});
 
     function onScroll() {
         const alwaysStickToTop = isSmallerThanViewport();
