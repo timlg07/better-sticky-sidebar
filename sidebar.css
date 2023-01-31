@@ -7,6 +7,7 @@
 
 /* positioning */
 .sidebar {
-    position: relative;
-    top: var(--push-down);
+    transform: translate(0, var(--push-down));
+    transform: translate3d(0, var(--push-down), 0);
+    will-change: transform;
 }
